@@ -27,29 +27,6 @@ shader_parameter/albedo_cubemap = ExtResource("3_albedo")
 shader_parameter/normal_cubemap = ExtResource("4_normal")
 shader_parameter/height_cubemap = ExtResource("5_height")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_globe_pick"]
-radius = 0.66
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_border"]
-render_priority = 1
-shader = ExtResource("2_shader")
-shader_parameter/normal_strength = 1.0
-shader_parameter/roughness = 0.850000040375
-shader_parameter/metallic = 0.0
-shader_parameter/specular = 0.4499999899416
-shader_parameter/albedo_tint = Color(1, 1, 1, 1)
-shader_parameter/heightmap_scale = 2.0000008549999997
-shader_parameter/heightmap_deep_parallax = true
-shader_parameter/heightmap_min_layers = 8
-shader_parameter/heightmap_max_layers = 32
-shader_parameter/heightmap_flip_tangent = false
-shader_parameter/heightmap_flip_binormal = false
-shader_parameter/heightmap_invert = false
-shader_parameter/heightmap_direction_scale = 1.0
-shader_parameter/albedo_cubemap = ExtResource("3_albedo")
-shader_parameter/normal_cubemap = ExtResource("4_normal")
-shader_parameter/height_cubemap = ExtResource("5_height")
-
 [sub_resource type="Environment" id="Environment_bg"]
 background_mode = 1
 background_color = Color(0.12, 0.14, 0.2, 1)
@@ -61,64 +38,6 @@ script = ExtResource("1_ig7tw")
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("6_globe_mesh")
 surface_material_override/0 = SubResource("ShaderMaterial_lquwl")
-
-[node name="GlobeCollider" type="StaticBody3D" parent="Globe" unique_id=1793931790]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Globe/GlobeCollider" unique_id=1842381543]
-shape = SubResource("SphereShape3D_globe_pick")
-
-[node name="GlobeBorderOverlay" type="MeshInstance3D" parent="Globe" unique_id=1604936417]
-transform = Transform3D(1.003, 0, 0, 0, 1.003, 0, 0, 0, 1.003, 0, 0, 0)
-cast_shadow = 0
-mesh = ExtResource("6_globe_mesh")
-surface_material_override/0 = SubResource("ShaderMaterial_border")
-
-[node name="GlobeCountryPicker" type="Node" parent="." unique_id=473641082]
-
-[node name="CountryUiLayer" type="CanvasLayer" parent="." unique_id=578884971]
-
-[node name="CountryUiPanel" type="Control" parent="CountryUiLayer" unique_id=1214348599]
-visible = false
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 96.0
-grow_horizontal = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="CountryUiLayer/CountryUiPanel" unique_id=42575137]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CountryUiLayer/CountryUiPanel/PanelContainer" unique_id=10125596]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CountryUiLayer/CountryUiPanel/PanelContainer/MarginContainer" unique_id=755997560]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="FlagRect" type="TextureRect" parent="CountryUiLayer/CountryUiPanel/PanelContainer/MarginContainer/HBoxContainer" unique_id=1091736549]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-expand_mode = 1
-stretch_mode = 5
-
-[node name="CountryNameLabel" type="Label" parent="CountryUiLayer/CountryUiPanel/PanelContainer/MarginContainer/HBoxContainer" unique_id=515064208]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Country"
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=538124869]
 
